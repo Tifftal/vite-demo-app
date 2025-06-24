@@ -4,11 +4,9 @@ import App from "./App.tsx";
 import { BrowserRouter } from "react-router-dom";
 
 if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("/sw.js").then(() => {
-      console.log("Service Worker Registered");
-    });
-  });
+  navigator.serviceWorker.register(
+    import.meta.env.MODE === "production" ? "/sw.js" : "/dev-sw.js?dev-sw"
+  );
 }
 
 createRoot(document.getElementById("root")!).render(

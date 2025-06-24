@@ -12,23 +12,23 @@ export default defineConfig({
       exposes: {
         "./news-app": "./src/App.tsx",
       },
-      // shared: {
-      //   react: {
-      //     // requiredVersion: dependencies.react,
-      //     singleton: true,
-      //     requiredVersion: "19.1.0",
-      //   },
-      //   "react-dom": {
-      //     // requiredVersion: dependencies["react-dom"],
-      //     requiredVersion: "19.1.0",
-      //     singleton: true,
-      //   },
-      //   "react-router-dom": {
-      //     // requiredVersion: dependencies["react-router-dom"],
-      //     requiredVersion: "7.6.2",
-      //     singleton: true,
-      //   },
-      // },
+      shared: {
+        react: {
+          // requiredVersion: dependencies.react,
+          singleton: true,
+          requiredVersion: "18.3.1",
+        },
+        "react-dom": {
+          // requiredVersion: dependencies["react-dom"],
+          requiredVersion: "18.3.1",
+          singleton: true,
+        },
+        "react-router-dom": {
+          // requiredVersion: dependencies["react-router-dom"],
+          requiredVersion: "7.6.2",
+          singleton: true,
+        },
+      },
     }),
   ],
   build: {
@@ -37,5 +37,6 @@ export default defineConfig({
   },
   server: {
     port: 5002,
+    cors: true,
   },
 });

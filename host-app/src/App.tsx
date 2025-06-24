@@ -1,6 +1,9 @@
 import { lazy, Suspense } from "react";
 import { Link, Route, Routes } from "react-router-dom";
 import MainPage from "./pages/MainPage";
+import { ErrorBoundary } from "./components/ErrorBoundary";
+// import Weather from "weather/weather-app";
+// import News from "news/news-app";
 
 const Weather = lazy(
   async () =>
@@ -25,11 +28,13 @@ function App() {
       </nav>
 
       <Suspense fallback={<div>Загрузка...</div>}>
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/news/*" element={<News baseUrl="/news" />} />
-          <Route path="/weather/*" element={<Weather baseUrl="/weather" />} />
-        </Routes>
+        <ErrorBoundary fallback={<div>Ошибка загрузки</div>}>
+          <Routes>
+            <Route path="/" element={<MainPage />} />
+            <Route path="/news/*" element={<News baseUrl="/news" />} />
+            <Route path="/weather/*" element={<Weather baseUrl="/weather" />} />
+          </Routes>
+        </ErrorBoundary>
       </Suspense>
     </>
   );
