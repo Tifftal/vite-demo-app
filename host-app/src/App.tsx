@@ -1,22 +1,9 @@
-import { lazy, Suspense } from "react";
+import { Suspense } from "react";
 import { Link, Route, Routes } from "react-router-dom";
 import MainPage from "./pages/MainPage";
 import { ErrorBoundary } from "./components/ErrorBoundary";
-// import Weather from "weather/weather-app";
-// import News from "news/news-app";
-
-const Weather = lazy(
-  async () =>
-    import("weather/weather-app") as Promise<{
-      default: React.FC<{ baseUrl: string }>;
-    }>
-);
-const News = lazy(
-  async () =>
-    import("news/news-app") as Promise<{
-      default: React.FC<{ baseUrl: string }>;
-    }>
-);
+import Weather from "weather/weather-app";
+import News from "news/news-app";
 
 function App() {
   return (

@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import { federation } from "@module-federation/vite";
+// import { federation } from "@module-federation/vite";
+import federation from "@originjs/vite-plugin-federation";
 // import { dependencies } from "./package.json";
 
 export default defineConfig({
@@ -13,24 +14,28 @@ export default defineConfig({
       exposes: {
         "./weather-app": "./src/App.tsx",
       },
-      // shared: ["react", "react-dom", "react-router-dom"],
       shared: {
-        react: {
-          // requiredVersion: dependencies.react,
-          singleton: true,
-          requiredVersion: "18.3.1",
-        },
-        "react-dom": {
-          // requiredVersion: dependencies["react-dom"],
-          requiredVersion: "18.3.1",
-          singleton: true,
-        },
-        "react-router-dom": {
-          // requiredVersion: dependencies["react-router-dom"],
-          requiredVersion: "7.6.2",
-          singleton: true,
-        },
+        react: { requiredVersion: "18.3.1" },
+        "react-dom": { requiredVersion: "18.3.1" },
+        "react-router-dom": { requiredVersion: "7.6.2" },
       },
+      // shared: {
+      //   react: {
+      //     // requiredVersion: dependencies.react,
+      //     singleton: true,
+      //     requiredVersion: "18.3.1",
+      //   },
+      //   "react-dom": {
+      //     // requiredVersion: dependencies["react-dom"],
+      //     requiredVersion: "18.3.1",
+      //     singleton: true,
+      //   },
+      //   "react-router-dom": {
+      //     // requiredVersion: dependencies["react-router-dom"],
+      //     requiredVersion: "7.6.2",
+      //     singleton: true,
+      //   },
+      // },
     }),
   ],
   build: {
@@ -41,5 +46,6 @@ export default defineConfig({
     port: 5001,
     cors: true,
   },
+  preview: { port: 5001, cors: true },
   assetsInclude: ["**/*.jpg", "**/*.png", "**/*.svg"],
 });

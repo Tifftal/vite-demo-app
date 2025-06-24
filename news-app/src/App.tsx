@@ -6,7 +6,7 @@ type NewsProps = {
   baseUrl?: string;
 };
 
-const App: React.FC<NewsProps> = ({ baseUrl }) => {
+const App: React.FC<NewsProps> = ({ baseUrl = "" }) => {
   return (
     <div>
       <nav style={{ display: "flex", gap: 20, marginBottom: 20 }}>
