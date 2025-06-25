@@ -1,10 +1,9 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import replace from "@rollup/plugin-replace";
-// import { federation } from "@module-federation/vite";
-import federation from "@originjs/vite-plugin-federation";
 import { VitePWA } from "vite-plugin-pwa";
 import process from "node:process";
+import federation from "@originjs/vite-plugin-federation";
 
 const useSwDev = process.env.SW_DEV === "true";
 const useSw = process.env.SW === "true";
@@ -20,23 +19,7 @@ export default defineConfig({
       remotes: {
         weather: "http://localhost:5001/assets/weather.js",
         news: "http://localhost:5002/assets/news.js",
-        // weather: {
-        //   type: "module",
-        //   name: "weather",
-        //   entry: "http://localhost:5001/weather.js",
-        //   entryGlobalName: "weather",
-        //   shareScope: "default",
-        // },
-        // news: {
-        //   type: "module",
-        //   name: "news",
-        //   entry: "http://localhost:5002/news.js",
-        //   entryGlobalName: "news",
-        //   shareScope: "default",
-        // },
       },
-      // exposes: {},
-      // filename: "remoteEntry.js",
       shared: {
         react: { requiredVersion: "18.3.1" },
         "react-dom": { requiredVersion: "18.3.1" },

@@ -1,29 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// import Image from "../assets/main.svg";
-
-import { useEffect, useState } from "react";
-import { GetAllNews } from "../services/API";
+import Image from "../assets/main.svg";
 
 const MainPage = () => {
-  const [news, setNews] = useState<any>();
-
-  useEffect(() => {
-    GetAllNews()
-      .then((res) => setNews(res.articles))
-      .catch((e) => console.error(e));
-  }, []);
-
   return (
     <div>
       <h1>Главная</h1>
-      {news?.map((item: any, index: number) => (
-        <div key={index} style={{ marginBottom: 50 }}>
-          <h3>{item.title}</h3>
-          <p>{item.description}</p>
-        </div>
-      ))}
-      {/* <img src={Image} /> */}
-      {/* <img src="/images_cache.png" /> */}
+      <img src={Image} />
+      <img src="/images_cache.png" />
     </div>
   );
 };
